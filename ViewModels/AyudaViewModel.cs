@@ -15,16 +15,18 @@ public struct EstructAyuda
 public sealed class AyudaViewModel: INotifyPropertyChanged 
 {
     public string? TextoAyuda => ListarJson("Assets/ayuda.json");
-    private string? ListarJson(string ruta) {
-        if (!File.Exists(ruta)) {
-            return null;
+    private string ListarJson(string ruta) {
+        if (!File.Exists(ruta))
+        {
+            return String.Empty;
         }
         string json = File.ReadAllText(ruta);
         dynamic? listado = JsonConvert.DeserializeObject<List<EstructAyuda>>(json);
 
         string resultado = String.Empty;
-        foreach (EstructAyuda item in listado)
-            resultado += $"{item.Id}: {item.Valor} \n";
+        if (listado != null)
+            foreach (EstructAyuda item in listado)
+                resultado += $"{item.Id}: {item.Valor} \n";
         
         return resultado;
     }

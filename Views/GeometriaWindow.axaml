@@ -1,0 +1,85 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MVVM_Geometria.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="{Binding $self.Width}" d:DesignHeight="{Binding $self.Height}"
+        x:Class="MVVM_Geometria.Views.GeometriaWindow"
+        x:DataType="vm:GeometriaViewModel"
+        x:Name="WinPrincipal"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Cálculo Geométrico"
+        Width="520"
+        Height="220"
+        CanResize="False">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:GeometriaViewModel/>
+    </Design.DataContext>
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="Opciones">
+                <MenuItem Header="_Calcular" HorizontalAlignment="Left" Width="180" InputGesture="Alt+C" Command="{Binding CmdCalcular}"  />
+                <MenuItem Header="_Limpiar" HorizontalAlignment="Left" Width="180" InputGesture="Alt+L" Command="{Binding CmdLimpiar}" />
+                <Separator Width="180" Height="2"/>
+                <MenuItem Header="Salir" HorizontalAlignment="Left" Width="180" InputGesture="Alt+F4" 
+                          Command="{Binding CmdSalir}" 
+                          CommandParameter="{Binding #WinPrincipal}" />
+            </MenuItem>
+            <MenuItem Header="Ayuda">
+                <MenuItem x:Name="MnuAyuda" Header="Ver la Ayuda" InputGesture="Ctrl+H"
+                          Command="{Binding CmdAyuda}"
+                          CommandParameter="{Binding #WinPrincipal}" />
+                <MenuItem x:Name="MnuAcerca" Header="Acerca de Cálculo " 
+                          Command="{Binding CmdAcercaDe}"
+                          CommandParameter="{Binding #WinPrincipal}" />
+            </MenuItem>
+        </Menu>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="10">
+                <TextBlock>
+                    <Label Width="90" FontWeight="Bold" Content="Lado mayor:" />
+                    <TextBox Width="120" Name="TxbLadoMayor" Text="{Binding LadoMayor}"/> 
+                </TextBlock>
+                <TextBlock>
+                    <Label Width="90" FontWeight="Bold" Content="Lado menor:" />
+                    <TextBox Width="120" Name="TxbLadoMenor" Text="{Binding LadoMenor}"/> 
+                </TextBlock>
+                <TextBlock>
+                    <Label Width="90" FontWeight="Bold" Content="Radio:" />
+                    <TextBox Width="120"  Name="TxbRadio" Text="{Binding Radio}"/> 
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <Button BorderBrush="{DynamicResource SystemAccentColor}" Margin="5" Name="BtnCalcular" Content="CALCULAR" Command="{Binding CmdCalcular}" />
+                    <Button BorderBrush="{DynamicResource SystemAccentColor}" Name="BtnLimpiar" Content="LIMPIAR" Command="{Binding CmdLimpiar}"/>
+                    <Button BorderBrush="{DynamicResource SystemAccentColor}" 
+                            Margin="5" Name="BtnSalir" Content="SALIR" 
+                            Command="{Binding CmdSalir}"
+                            CommandParameter="{Binding #WinPrincipal}">
+                    </Button>
+                </StackPanel>
+                <Label Name="LblEstado" FontSize="10" Content="{Binding Mensaje}"/>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <TextBlock>
+                    <Label Width="140" Content="Área del rectángulo:" />
+                    <Label Foreground="{Binding ColorAreaRect}" FontWeight="Bold" Content="{Binding AreaRectangulo, StringFormat=N2}"/> 
+                </TextBlock>
+                <TextBlock>
+                    <Label Width="140" Content="Perímetro:" />
+                    <Label  FontWeight="Bold" Content="{Binding Perimetro, StringFormat=N2}"/> 
+                </TextBlock>
+                <TextBlock>
+                    <Label Width="140" Content="Longitud circunf:" />
+                    <Label FontWeight="Bold" Content="{Binding LongitudCircunf, StringFormat=N2}"/> 
+                </TextBlock>
+                <TextBlock>
+                    <Label Width="140" Content="Área del círculo:" />
+                    <Label Foreground="{Binding ColorAreaCirc}" FontWeight="Bold" Content="{Binding AreaCirculo, StringFormat=N2}"/> 
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>

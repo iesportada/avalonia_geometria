@@ -1,0 +1,23 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="{Binding $self.Width}" d:DesignHeight="{Binding $self.Height}"
+        x:Class="MVVM_Geometria.Views.AcercaDeWindow"
+        x:Name="WinAyuda"
+        Title="Acerca De"
+        Width="300" Height="290"
+        SystemDecorations="BorderOnly"
+        WindowStartupLocation="CenterOwner">
+    
+    <StackPanel>
+        <Image Height="200" Stretch="Uniform" Source="/Assets/acercaDe.png"/>
+        <TextBlock HorizontalAlignment="Center" Name="TbInfo">
+            <Run FontWeight="Light">Cálculo de Geometría</Run>
+            <LineBreak/>
+            <Run FontWeight="Bold">Autor:</Run>
+            <Run>Eliseo Moreno</Run>
+        </TextBlock>
+        <Button Margin="10" HorizontalAlignment="Center" Content="Cerrar" Click="Button_OnClick"/>
+    </StackPanel>
+</Window>

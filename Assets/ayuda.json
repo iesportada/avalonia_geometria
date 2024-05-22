@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "Área del rectángulo",
+    "Valor": "Producto del lado mayor por el lado menor"
+  },
+  {
+    "Id": "Área del círculo",
+    "Valor": "Producto de PI por el cuadrado del radio"
+  },
+  {
+    "Id": "Perímetro del rectángulo",
+    "Valor": "Dos veces el lado menor más dos veces el lado mayor"
+  },
+  {
+    "Id": "Longitud de circunferencia",
+    "Valor": "Producto del PI por el diámetro"
+  }  
+]

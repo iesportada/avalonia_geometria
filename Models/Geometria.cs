@@ -38,7 +38,7 @@ public class Geometria
                 throw new Exception("Valor negativo");
             else
             {
-                _radio = value ?? 0;
+                _radio = value ?? 0; // coalesce operator. Si value != null recoge value, else recoge 0.
             }
         }
     }
